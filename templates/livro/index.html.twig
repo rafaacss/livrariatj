@@ -70,12 +70,12 @@
                                 </td>
 
                                 <td>
-                                    R$ {{ livro.Valor }}
+                                    {{ livro.Valor|format_currency('BRL') }}
                                 </td>
 
                                 <td class="text-center">
 
-                                    <div class="d-flex justify-content-center gap-2">
+                                    <div class="d-flex justify-content-center align-items-center gap-2">
 
                                         <a
                                             href="{{ path('app_livro_show', {'Codl': livro.Codl}) }}"
@@ -91,6 +91,7 @@
                                             Editar
                                         </a>
 
+                                        {{ include('livro/_delete_form.html.twig', {'livro': livro}) }}
                                     </div>
 
                                 </td>
