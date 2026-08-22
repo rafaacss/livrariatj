@@ -1,4 +1,68 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<div class="container py-4">
+
+    <div class="card shadow-sm mx-auto">
+
+        <div class="card-header">
+            <h1 class="h4 mb-0">
+                {{ title|default('Livro') }}
+            </h1>
+        </div>
+
+        <div class="card-body">
+
+            {{ form_start(form) }}
+
+            <div class="row g-3">
+
+                <div class="col-md-6">
+                    {{ form_row(form.Titulo) }}
+                </div>
+
+                <div class="col-md-6">
+                    {{ form_row(form.Editora) }}
+                </div>
+
+                <div class="col-md-4">
+                    {{ form_row(form.Edicao) }}
+                </div>
+
+                <div class="col-md-4">
+                    {{ form_row(form.AnoPublicacao) }}
+                </div>
+
+                <div class="col-md-4">
+                    {{ form_row(form.Valor) }}
+                </div>
+
+                <div class="col-md-6">
+                    {{ form_row(form.autores) }}
+                </div>
+
+                <div class="col-md-6">
+                    {{ form_row(form.assuntos) }}
+                </div>
+
+            </div>
+
+            <div class="d-flex justify-content-end gap-2 mt-4">
+
+                <a
+                    href="{{ path('app_livro_index') }}"
+                    class="btn btn-secondary"
+                >
+                    Cancelar
+                </a>
+
+                <button class="btn btn-primary">
+                    {{ button_label|default('Salvar') }}
+                </button>
+
+            </div>
+
+            {{ form_end(form) }}
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,133 @@
+body {
+    margin: 0;
+    padding-top: 56px;
+}
+
+.sidebar {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    bottom: 0;
+
+    width: 250px;
+
+    background-color: #212529;
+
+    transition: width 0.3s ease;
+
+    overflow-x: hidden;
+}
+
+.sidebar .nav-link {
+    color: #fff;
+
+    display: flex;
+    align-items: center;
+
+    padding: 12px 20px;
+
+    white-space: nowrap;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #343a40;
+}
+
+.menu-icon {
+    min-width: 35px;
+    font-size: 20px;
+}
+
+.menu-text {
+    opacity: 1;
+
+    transition: opacity 0.2s ease;
+}
+
+
+/* CONTEÚDO */
+
+.content {
+    margin-left: 250px;
+
+    padding: 30px;
+
+    width: calc(100% - 250px);
+
+    transition: margin-left 0.3s ease,
+    width 0.3s ease;
+}
+
+
+/* MENU RECOLHIDO */
+
+.sidebar.collapsed {
+    width: 70px;
+}
+
+.sidebar.collapsed .menu-text {
+    opacity: 0;
+}
+
+.content.expanded {
+    margin-left: 70px;
+    width: calc(100% - 70px);
+}
+
+.form-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.form-container h1 {
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 600;
+    color: #212529;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #343a40;
+}
+
+.form-control,
+.form-select {
+    width: 100%;
+    min-height: 42px;
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 15px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+    outline: none;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #dee2e6;
+}
+
+.d-ruby {
+    display: ruby !important;
+}
