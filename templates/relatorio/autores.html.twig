@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Relatório por autor
+{% endblock %}
+{% block styles %}
+    div { align-content: center; }
+{% endblock %}
+
+{% block body %}
+    <h1>Relatório de livros por autor</h1>
+
+    {% for autor in autores %}
+        <div class="row col-md-12 table-responsive">
+            <section>
+                <h2>
+                    {{ autor.Nome }}
+                </h2>
+                <table class="table table-dark table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">Código</th>
+                        <th scope="col">Título</th>
+                        <th scope="col">Editora</th>
+                        <th scope="col">Edição</th>
+                        <th scope="col">Ano</th>
+                        <th scope="col">Valor</th>
+                        <th scope="col">Assuntos</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    {%  for livro in autor.livros %}
+                        <tr>
+                            <th scope="row">{{ livro.Codigo }}</th>
+                            <td>{{ livro.Titulo }}</td>
+                            <td>{{ livro.Editora }}</td>
+                            <td>{{ livro.Edicao }}</td>
+                            <td>{{ livro.AnoPublicacao }}</td>
+                            <td>{{ livro.Valor }}</td>
+                            <td>{{ livro.Assuntos|join(', ') }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+
+                </table>
+            </section>
+        </div>
+
+    {% else %}
+        <p>Nenhum registro encontrado</p>
+    {% endfor %}
+{% endblock %}
+
