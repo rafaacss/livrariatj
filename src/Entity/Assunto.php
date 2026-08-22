@@ -33,12 +33,12 @@ class Assunto
 
     public function getCodAs(): ?int
     {
-        return $this->CodAs;
+        return $this->codAs;
     }
 
-    public function setCodAs(int $CodAs): static
+    public function setCodAs(int $codAs): static
     {
-        $this->CodAs = $CodAs;
+        $this->codAs = $codAs;
 
         return $this;
     }
@@ -51,6 +51,18 @@ class Assunto
     public function setDescricao(string $Descricao): static
     {
         $this->Descricao = $Descricao;
+
+        return $this;
+    }
+
+    public function getLivros(): Collection
+    {
+        return $this->livros;
+    }
+
+    public function removeLivro(Livro $livro): static
+    {
+        $this->livros->removeElement($livro);
 
         return $this;
     }

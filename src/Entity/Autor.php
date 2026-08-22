@@ -53,4 +53,16 @@ class Autor
 
         return $this;
     }
+
+    public function getLivros(): Collection
+    {
+        return $this->livros;
+    }
+
+    public function removeLivro(Livro $livro): static
+    {
+        $this->livros->removeElement($livro);
+
+        return $this;
+    }
 }

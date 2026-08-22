@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Livro index{% endblock %}
+
+{% block body %}
+    <h1>Livro index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Codl</th>
+                <th>Titulo</th>
+                <th>Editora</th>
+                <th>Edicao</th>
+                <th>AnoPublicacao</th>
+                <th>Valor</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for livro in livros %}
+            <tr>
+                <td>{{ livro.Codl }}</td>
+                <td>{{ livro.Titulo }}</td>
+                <td>{{ livro.Editora }}</td>
+                <td>{{ livro.Edicao }}</td>
+                <td>{{ livro.AnoPublicacao }}</td>
+                <td>{{ livro.Valor }}</td>
+                <td>
+                    <a href="{{ path('app_livro_show', {'Codl': livro.Codl}) }}">show</a>
+                    <a href="{{ path('app_livro_edit', {'Codl': livro.Codl}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_livro_new') }}">Create new</a>
+{% endblock %}
