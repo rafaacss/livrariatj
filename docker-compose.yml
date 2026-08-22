@@ -39,9 +39,10 @@ services:
             MYSQL_PASSWORD: livrariatj
         ports:
             - "3306:3306"
+        volumes:
+            - mysql_data:/var/lib/mysql
         networks:
             - livrariatj
-
     redis:
         image: redis:alpine
         container_name: livrariatj_redis
@@ -53,3 +54,5 @@ services:
 
 networks:
     livrariatj:
+volumes:
+    mysql_data:
