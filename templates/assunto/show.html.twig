@@ -1,26 +1,63 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Assunto{% endblock %}
+{% block title %}Autor{% endblock %}
 
 {% block body %}
-    <h1>Assunto</h1>
+<div class="container py-4">
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>CodAs</th>
-                <td>{{ assunto.codAs }}</td>
-            </tr>
-            <tr>
-                <th>Descricao</th>
-                <td>{{ assunto.Descricao }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="card shadow-sm mx-auto" >
 
-    <a href="{{ path('app_assunto_index') }}">back to list</a>
+        <div class="card-header">
+            <h1 class="h4 mb-0">
+                Assunto
+            </h1>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered align-middle mb-0">
+                <tbody>
+                <tr>
+                    <th class="table-light" style="width: 30%;">
+                        Código
+                    </th>
+                    <td>
+                        {{ assunto.codAs }}
+                    </td>
+                </tr>
 
-    <a href="{{ path('app_assunto_edit', {'codAs': assunto.codAs}) }}">edit</a>
+                <tr>
+                    <th class="table-light">
+                        Descrição
+                    </th>
+                    <td>
+                        {{ assunto.Descricao }}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
 
-    {{ include('assunto/_delete_form.html.twig') }}
-{% endblock %}
+            <div class="card-footer d-flex justify-content-between align-items-center">
+
+                <a
+                    href="{{ path('app_assunto_index') }}"
+                    class="btn btn-secondary"
+                >
+                    Voltar
+                </a>
+
+                <div class="justify-content-between align-items-center d-flex gap-2">
+
+                    <a
+                        href="{{ path('app_assunto_edit', {'codAs': assunto.codAs}) }}"
+                        class="btn btn-primary"
+                    >
+                        Editar
+                    </a>
+
+                    {{ include('assunto/_delete_form.html.twig') }}
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% endblock %}

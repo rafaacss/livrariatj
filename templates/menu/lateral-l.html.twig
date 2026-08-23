@@ -1,0 +1,112 @@
+
+
+<aside id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+            <span class="sidebar-title">
+                Menu
+            </span>
+    </div>
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a
+                class="nav-link"
+                href="{{ path('app_livro_index') }}"
+            >
+                <span class="menu-icon"><i class="fa-solid fa-book"></i></span>
+
+                <span class="menu-text">Livros</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a
+                class="nav-link"
+                href="{{ path('app_livro_new') }}"
+            >
+                <span class="menu-icon"><i class="fa-solid fa-book-open-reader"></i></span>
+                <span class="menu-text">Novo livro</span>
+            </a>
+        </li>
+        <li class="nav-item dropdown">
+            <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="cadastrosDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+            >
+                <span class="menu-icon">
+                    <i class="fa-solid fa-book"></i>
+                </span>
+
+                <span class="menu-text">Cadastros</span>
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="cadastrosDropdown">
+                <a
+                    class="dropdown-item"
+                    href="{{ path('app_autor_index') }}"
+                >
+                    <i class="fa-solid fa-address-book"></i>
+                    Autores
+                </a>
+
+                <a
+                    class="dropdown-item"
+                    href="{{ path('app_assunto_index') }}"
+                >
+                    <i class="fa-solid fa-list-ul"></i>
+                    Assuntos
+                </a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="relatoriosDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+            >
+                <span class="menu-icon">
+                    <i class="fa-solid fa-book"></i>
+                </span>
+
+                <span class="menu-text">Relatórios</span>
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="relatoriosDropdown">
+                <a
+                    class="dropdown-item"
+                    href="{{ path('app_relatorio_autores') }}"
+                >
+                    <i class="fa-solid fa-address-book"></i>
+                    Por autor
+                </a>
+
+                <a
+                    class="dropdown-item"
+                    href="{{ path('app_relatorio_autores') }}"
+                >
+                    <i class="fa-solid fa-list-ul"></i>
+                    Por livro
+                </a>
+            </div>
+        </li>
+    </ul>
+
+</aside>
+
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+    const content = document.getElementById('content');
+
+    menuToggle.addEventListener('click', function () {
+        sidebar.classList.toggle('collapsed');
+        content.classList.toggle('expanded');
+    });
+</script>

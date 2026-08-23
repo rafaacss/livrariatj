@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Autor{% endblock %}
+{% block title %}Novo autor{% endblock %}
 
 {% block body %}
-    <h1>Create new Autor</h1>
+    <h1>Cadastro autor</h1>
 
     {{ include('autor/_form.html.twig') }}
 
-    <a href="{{ path('app_autor_index') }}">back to list</a>
+    <a href="{{ path('app_autor_index') }}" class="btn btn-secondary">Voltar</a>
 {% endblock %}

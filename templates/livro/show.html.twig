@@ -6,7 +6,7 @@
 
     <div class="container py-4">
 
-        <div class="card shadow-sm mx-auto" >
+        <div class="card shadow-sm mx-auto">
 
             <div class="card-header">
                 <h1 class="h4 mb-0">
@@ -17,101 +17,96 @@
             <div class="card-body">
 
                 <table class="table table-bordered align-middle mb-0">
-
                     <tbody>
+                        <tr>
+                            <th class="table-light" style="width: 30%;">
+                                Código
+                            </th>
+                            <td>
+                                {{ livro.Codl }}
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <th class="table-light" style="width: 30%;">
-                            Código
-                        </th>
-                        <td>
-                            {{ livro.Codl }}
-                        </td>
-                    </tr>
+                        <tr>
+                            <th class="table-light">
+                                Título
+                            </th>
+                            <td>
+                                {{ livro.Titulo }}
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <th class="table-light">
-                            Título
-                        </th>
-                        <td>
-                            {{ livro.Titulo }}
-                        </td>
-                    </tr>
+                        <tr>
+                            <th class="table-light">
+                                Editora
+                            </th>
+                            <td>
+                                {{ livro.Editora }}
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <th class="table-light">
-                            Editora
-                        </th>
-                        <td>
-                            {{ livro.Editora }}
-                        </td>
-                    </tr>
+                        <tr>
+                            <th class="table-light">
+                                Edição
+                            </th>
+                            <td>
+                                {{ livro.Edicao }}
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <th class="table-light">
-                            Edição
-                        </th>
-                        <td>
-                            {{ livro.Edicao }}
-                        </td>
-                    </tr>
+                        <tr>
+                            <th class="table-light">
+                                Ano de publicação
+                            </th>
+                            <td>
+                                {{ livro.AnoPublicacao }}
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <th class="table-light">
-                            Ano de publicação
-                        </th>
-                        <td>
-                            {{ livro.AnoPublicacao }}
-                        </td>
-                    </tr>
+                        <tr>
+                            <th class="table-light">
+                                Valor
+                            </th>
+                            <td>
+                                R$ {{ livro.Valor }}
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <th class="table-light">
-                            Valor
-                        </th>
-                        <td>
-                            R$ {{ livro.Valor }}
-                        </td>
-                    </tr>
+                        <tr>
+                            <th class="table-light">
+                                Autores
+                            </th>
+                            <td>
+                                {% for autor in livro.autores %}
+                                    <span class="badge bg-primary me-1">
+                                            {{ autor.Nome }}
+                                        </span>
+                                {% else %}
+                                    <span class="text-muted">
+                                            Nenhum autor informado
+                                        </span>
+                                {% endfor %}
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <th class="table-light">
-                            Autores
-                        </th>
-                        <td>
-                            {% for autor in livro.autores %}
-                                <span class="badge bg-primary me-1">
-                                        {{ autor.Nome }}
-                                    </span>
-                            {% else %}
-                                <span class="text-muted">
-                                        Nenhum autor informado
-                                    </span>
-                            {% endfor %}
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <th class="table-light">
-                            Assuntos
-                        </th>
-                        <td>
-                            {% for assunto in livro.assuntos %}
-                                <span class="badge bg-secondary me-1">
-                                        {{ assunto.Descricao }}
-                                    </span>
-                            {% else %}
-                                <span class="text-muted">
-                                        Nenhum assunto informado
-                                    </span>
-                            {% endfor %}
-                        </td>
-                    </tr>
-
+                        <tr>
+                            <th class="table-light">
+                                Assuntos
+                            </th>
+                            <td>
+                                {% for assunto in livro.assuntos %}
+                                    <span class="badge bg-secondary me-1">
+                                            {{ assunto.Descricao }}
+                                        </span>
+                                {% else %}
+                                    <span class="text-muted">
+                                            Nenhum assunto informado
+                                        </span>
+                                {% endfor %}
+                            </td>
+                        </tr>
                     </tbody>
-
                 </table>
-
             </div>
 
             <div class="card-footer d-flex justify-content-between align-items-center">
