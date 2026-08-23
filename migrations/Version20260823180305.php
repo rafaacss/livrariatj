@@ -21,7 +21,7 @@ final class Version20260823180305 extends AbstractMigration
     {
         $this->addSql("CREATE VIEW vw_relatorio_livro AS
             SELECT
-                Livro.Codl
+                Livro.Codl,
                 GROUP_CONCAT(DISTINCT Autor.Nome ORDER BY Autor.Nome ASC SEPARATOR ', ') AS autores,
                 Livro.Titulo,
                 Livro.Editora,
