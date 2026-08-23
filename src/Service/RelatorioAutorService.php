@@ -36,7 +36,7 @@ final class RelatorioAutorService
         return $this->agruparPorAutor($linhas);
     }
 
-    private function agruparPorAutor(array $linhas): array
+    public function agruparPorAutor(array $linhas): array
     {
         $autores = [];
 

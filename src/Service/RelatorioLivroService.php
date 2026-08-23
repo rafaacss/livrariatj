@@ -33,32 +33,4 @@ final class RelatorioLivroService
 
         return array_values($linhas);
     }
-
-    private function agrupar(array $linhas): array
-    {
-        $autores = [];
-
-        foreach ($linhas as $linha) {
-            $codAutor = (int) $linha['CodAu'];
-
-            if (!isset($autores[$codAutor])) {
-                   $autores[$codAutor] = [
-                       'Nome' => $linha['Nome'],
-                       'livros' => [],
-                       'total' => [],
-                   ];
-            }
-
-            $autores[$codAutor]['livros'][] = [
-                'Codigo'          => $linha['Codl'],
-                'Titulo'        => $linha['Titulo'],
-                'Editora'       => $linha['Editora'],
-                'Edicao'        => $linha['Edicao'],
-                'AnoPublicacao' => $linha['AnoPublicacao'],
-                'Valor'         => $linha['Valor'],
-                'Assuntos'      => $linha['Assuntos'] ? explode(', ', $linha['Assuntos']) : '',
-            ];
-        }
-        return array_values($autores);
-    }
 }
