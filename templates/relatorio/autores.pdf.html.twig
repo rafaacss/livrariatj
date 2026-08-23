@@ -1,0 +1,163 @@
+{% block title %}
+    Relatório por autor
+{% endblock %}
+
+{% block body %}
+    <h1>Relatório de livros por autor</h1>
+
+    {% for autor in autores %}
+        <div class="row col-md-12 table-responsive">
+            <section>
+                <h2>
+                    {{ autor.Nome }}
+                </h2>
+                <table class="">
+                    <thead>
+                    <tr>
+                        <th scope="col">Código</th>
+                        <th scope="col">Título</th>
+                        <th scope="col">Editora</th>
+                        <th scope="col">Edição</th>
+                        <th scope="col">Ano</th>
+                        <th scope="col">Valor</th>
+                        <th scope="col">Assuntos</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    {%  for livro in autor.livros %}
+                        <tr>
+                            <td>{{ livro.Codigo }}</td>
+                            <td>{{ livro.Titulo }}</td>
+                            <td>{{ livro.Editora }}</td>
+                            <td>{{ livro.Edicao }}</td>
+                            <td>{{ livro.AnoPublicacao }}</td>
+                            <td>{{ livro.Valor|format_currency('BRL') }}</td>
+                            <td>{{ livro.Assuntos|join(', ') }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+
+                </table>
+            </section>
+        </div>
+
+    {% else %}
+        <p>Nenhum registro encontrado</p>
+    {% endfor %}
+    <style>
+        /* relatório-livros.css */
+
+        @page {
+            size: A4 landscape;
+            margin: 15mm 10mm 15mm 10mm;
+        }
+
+        body {
+            font-family: DejaVu Sans, sans-serif;
+            font-size: 10px;
+            color: #222;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 20px;
+            margin: 0 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #222;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        thead {
+            display: table-header-group;
+        }
+
+        tfoot {
+            display: table-footer-group;
+        }
+
+        tr {
+            page-break-inside: avoid;
+        }
+
+        th {
+            background-color: #212529;
+            color: #ffffff;
+            font-weight: bold;
+            text-align: left;
+            padding: 7px 6px;
+            border: 1px solid #343a40;
+        }
+
+        td {
+            padding: 6px;
+            border: 1px solid #dee2e6;
+            vertical-align: top;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        /* Largura das colunas */
+
+        th:nth-child(1),
+        td:nth-child(1) {
+            width: 25%;
+        }
+
+        th:nth-child(2),
+        td:nth-child(2) {
+            width: 15%;
+        }
+
+        th:nth-child(3),
+        td:nth-child(3) {
+            width: 7%;
+            text-align: center;
+        }
+
+        th:nth-child(4),
+        td:nth-child(4) {
+            width: 8%;
+            text-align: center;
+        }
+
+        th:nth-child(5),
+        td:nth-child(5) {
+            width: 10%;
+            text-align: right;
+        }
+
+        th:nth-child(6),
+        td:nth-child(6) {
+            width: 18%;
+        }
+
+        th:nth-child(7),
+        td:nth-child(7) {
+            width: 17%;
+        }
+
+        .relatorio-footer {
+            margin-top: 15px;
+            padding-top: 8px;
+            border-top: 1px solid #ccc;
+            font-size: 9px;
+            color: #666;
+            text-align: right;
+        }
+    </style>
+
+{% endblock %}
+

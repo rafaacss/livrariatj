@@ -10,6 +10,15 @@
 {% block body %}
     <h1>Relatório de livros por autor</h1>
 
+    <div class="row col-md-2 left mb-3 lf">
+        <a
+            href="{{ path('app_relatorio_pdf_autores') }}"
+            class="btn btn-primary"
+        >
+            Gerar Pdf
+        </a>
+    </div>
+
     {% for autor in autores %}
         <div class="row col-md-12 table-responsive">
             <section>

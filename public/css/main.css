@@ -8,29 +8,16 @@ body {
     top: 56px;
     left: 0;
     bottom: 0;
-
     width: 250px;
-
-    background-color: #212529;
-
     transition: width 0.3s ease;
-
     overflow-x: hidden;
 }
 
 .sidebar .nav-link {
-    color: #fff;
-
     display: flex;
     align-items: center;
-
     padding: 12px 20px;
-
     white-space: nowrap;
-}
-
-.sidebar .nav-link:hover {
-    background-color: #343a40;
 }
 
 .menu-icon {
@@ -40,27 +27,20 @@ body {
 
 .menu-text {
     opacity: 1;
-
     transition: opacity 0.2s ease;
 }
 
 
 /* CONTEÚDO */
-
 .content {
     margin-left: 250px;
-
     padding: 30px;
-
     width: calc(100% - 250px);
-
-    transition: margin-left 0.3s ease,
-    width 0.3s ease;
+    transition: margin-left 0.3s ease, width 0.3s ease;
 }
 
 
 /* MENU RECOLHIDO */
-
 .sidebar.collapsed {
     width: 70px;
 }
@@ -78,7 +58,6 @@ body {
     max-width: 900px;
     margin: 0 auto;
     padding: 30px;
-    background: #fff;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
@@ -87,7 +66,6 @@ body {
     margin-bottom: 30px;
     font-size: 28px;
     font-weight: 600;
-    color: #212529;
 }
 
 .form-group {
@@ -98,7 +76,6 @@ body {
     display: block;
     margin-bottom: 6px;
     font-weight: 500;
-    color: #343a40;
 }
 
 .form-control,

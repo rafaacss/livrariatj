@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Relatório por autor
+    Relatório Livros
 {% endblock %}
 {% block styles %}
     div { align-content: center; }
@@ -9,6 +9,15 @@
 
 {% block body %}
     <h1>Relatório de livros</h1>
+
+    <div class="row col-md-2 left mb-3 lf">
+        <a
+            href="{{ path('app_relatorio_pdf_livros') }}"
+            class="btn btn-primary"
+        >
+            Gerar Pdf
+        </a>
+    </div>
 
     <div class="row col-md-12 table-responsive">
         <section>
