@@ -35,13 +35,6 @@ class Autor
         return $this->CodAu;
     }
 
-    public function setCodAu(int $CodAu): static
-    {
-        $this->CodAu = $CodAu;
-
-        return $this;
-    }
-
     public function getNome(): ?string
     {
         return $this->Nome;

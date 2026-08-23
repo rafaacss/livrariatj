@@ -72,9 +72,30 @@ final class AutorController extends AbstractController
     #[Route('/{CodAu}', name: 'app_autor_delete', methods: ['POST'])]
     public function delete(Request $request, #[MapEntity(id: 'CodAu')] Autor $autor, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$autor->getCodAu(), $request->getPayload()->getString('_token'))) {
-            $entityManager->remove($autor);
-            $entityManager->flush();
+        try {
+            if($autor->getLivros()->count() > 0) {
+                $this->addFlash(
+                    'danger',
+                    'Erro ao excluir autor! Existe livro vinculado a este autor.'
+                );
+                return $this->redirectToRoute('app_autor_index', [], Response::HTTP_SEE_OTHER);
+            }
+
+            if ($this->isCsrfTokenValid('delete'.$autor->getCodAu(), $request->getPayload()->getString('_token'))) {
+                $entityManager->remove($autor);
+                $entityManager->flush();
+            }
+
+            $this->addFlash(
+                'success',
+                'Autor excluído com sucesso!'
+            );
+
+        } catch (\Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException $exception){
+            $this->addFlash(
+                'danger',
+                'Erro ao excluir autor! Existe livro vinculado a este autor.'
+            );
         }
 
         return $this->redirectToRoute('app_autor_index', [], Response::HTTP_SEE_OTHER);

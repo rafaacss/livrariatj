@@ -72,10 +72,36 @@ final class AssuntoController extends AbstractController
     #[Route('/{codAs}', name: 'app_assunto_delete', methods: ['POST'])]
     public function delete(Request $request, #[MapEntity(id: 'codAs')] Assunto $assunto, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$assunto->getCodAs(), $request->getPayload()->getString('_token'))) {
-            $entityManager->remove($assunto);
-            $entityManager->flush();
+        try {
+            if($assunto->getLivros()->count() > 0) {
+                $this->addFlash(
+                    'danger',
+                    'Erro ao excluir assunto! Existe livro vinculado a este assunto.'
+                );
+                return $this->redirectToRoute('app_autor_index', [], Response::HTTP_SEE_OTHER);
+            }
+
+            if ($this->isCsrfTokenValid('delete'.$assunto->getCodAs(), $request->getPayload()->getString('_token'))) {
+                $entityManager->remove($assunto);
+                $entityManager->flush();
+
+                $this->addFlash(
+                    'success',
+                    'Autor cadastrado com sucesso!'
+                );
+            }
+
+            $this->addFlash(
+                'danger',
+                'Erro ao exluir assunto!, se o erro persistir, entre em contato com o suporte.'
+            );
+        }catch (\Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException $exception) {
+            $this->addFlash(
+                'danger',
+                'Erro ao exluir assunto! Existe livro vinculado a este assunto.'
+            );
         }
+
 
         return $this->redirectToRoute('app_assunto_index', [], Response::HTTP_SEE_OTHER);
     }

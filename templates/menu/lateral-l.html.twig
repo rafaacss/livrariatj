@@ -96,9 +96,16 @@
                 </a>
             </div>
         </li>
+        <a
+            id="temaToggle"
+            href="#"
+            class="btn btn-sm btn-outline-light">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </a>
     </ul>
 
 </aside>
+
 
 <script>
     const menuToggle = document.getElementById('menuToggle');
@@ -109,4 +116,11 @@
         sidebar.classList.toggle('collapsed');
         content.classList.toggle('expanded');
     });
+
+    document.getElementById('temaToggle').addEventListener('click', () => {
+        const html = document.documentElement;
+        const atual = html.getAttribute('data-bs-theme');
+        html.setAttribute('data-bs-theme', atual === 'dark' ? 'light' : 'dark');
+    });
+
 </script>
