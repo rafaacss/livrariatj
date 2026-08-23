@@ -34,7 +34,7 @@ final class Version20260823180305 extends AbstractMigration
                      JOIN Autor ON Autor.CodAu = Livro_Autor.Autor_CodAu
                      LEFT JOIN Livro_Assunto ON Livro.Codl = Livro_Assunto.Livro_Codl
                      LEFT JOIN Assunto ON Assunto.CodAs = Livro_Assunto.Assunto_CodAs
-            GROUP BY Livro.Codl
+            GROUP BY Livro.Codl,
                      Livro.Titulo,
                      Livro.Editora,
                      Livro.Edicao,
