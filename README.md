@@ -163,7 +163,6 @@ docker compose exec app php bin/console doctrine:fixtures:load -n
 # preparar o ambiente de teste
 docker compose exec app php bin/console doctrine:database:create --env=test --if-not-exists
 docker compose exec app php bin/console doctrine:migrations:migrate --env=test -n
-docker compose exec app php bin/phpunit
 ```
 
 Depois, acesse:
