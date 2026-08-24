@@ -153,7 +153,7 @@ Para configurar o projeto a partir de um clone limpo:
 
 ```bash
 git clone <URL_DO_REPOSITORIO>
-cd livraria
+cd livrariatj
 
 docker compose up -d --build
 docker compose exec app composer install
