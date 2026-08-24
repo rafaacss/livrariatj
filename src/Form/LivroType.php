@@ -42,7 +42,7 @@ class LivroType extends AbstractType
                 ],
             ])
 
-            ->add('AnoPublicacao', TextType::class, [
+            ->add('AnoPublicacao', IntegerType::class, [
                 'label' => 'Ano de publicação',
                 'attr' => [
                     'class' => 'form-control',
@@ -51,9 +51,8 @@ class LivroType extends AbstractType
                 ],
             ])
 
-            ->add('Valor', NumberType::class, [
+            ->add('Valor', TextType::class, [
                 'label' => 'Valor',
-                'scale' => 2,
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Ex.: 133.90',
