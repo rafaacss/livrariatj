@@ -312,6 +312,18 @@ docker compose exec app php bin/console doctrine:schema:validate
 
 ## Decisões técnicas
 
+### Fidelidade ao modelo imposto
+
+O modelo de dados definido pelo projeto teste foi mantido nos mesmos pontos em que seria possível propor um modelo diferente. AnoPublicacao permanece como **VARCHAR(4)** e as tabelas de junção não foram criadas como entidades do Doctrine, evitando alterar o modelo por preferência de implementação.
+
+### Valor como DECIMAL(10,2)
+
+O campo Valor utiliza DESCIMAL, e não FLOAT, porque representa dinheiro e não deve sofrer alterações de precisão de ponto flutuante.
+
+### schema_filter
+
+Foi necessário por existirem objetos criados manualmente no banco de dados, como a view utilizada pelos relatórios, que não devem ser tratados pelo Doctrine.
+
 ### Relatório baseado em View no banco
 
 O relatório de livros utiliza uma **view no MySQL**, em vez de concentrar toda a montagem do relatório em uma query executada diretamente pela aplicação. A decisão mantém a consulta do relatório próxima aos dados e permite reutilizá-la de forma consistente, deixando o Symfony responsável por consumir o resultado e apresentar as informações.
