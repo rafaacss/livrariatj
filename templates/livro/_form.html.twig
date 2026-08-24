@@ -49,3 +49,51 @@
         </div>
     </div>
 </div>
+{% block javascripts %}
+    <script type="text/javascript">
+        const form = document.querySelector('form');
+        const valorInput = document.querySelector('#livro_Valor');
+
+        document.addEventListener('DOMContentLoaded', function () {
+            if (valorInput.value) {
+                const valorInicial = valorInput.value.replace(',', '.');
+
+                if (!isNaN(Number(valorInicial))) {
+                    valorInput.value = Number(valorInicial).toLocaleString('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL'
+                    });
+                }
+            }
+        })
+
+        valorInput.addEventListener('input', function(event) {
+            let valor = this.value.replace(/[^0-9]/g, '');
+
+            if (!form || !valor) {
+                this.value = '';
+                return;
+            }
+
+            valor = (parseInt(valor) / 100).toFixed(2);
+
+            this.value = new Intl.NumberFormat(
+                'pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                }
+            ).format(valor);
+        })
+        form.addEventListener('submit', () => {
+            let valor = valorInput.value;
+
+            valor = valorInput.value
+                .replace(/\s/g, '')
+                .replace('R$', '')
+                .replace(/\./g, '')
+                .replace(',', '.');
+
+            valorInput.value = valor;
+        });
+    </script>
+{% endblock %}
