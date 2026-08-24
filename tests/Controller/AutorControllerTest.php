@@ -36,7 +36,7 @@ final class AutorControllerTest extends WebTestCase
         $crawler = $this->client->request('GET', $this->path);
 
         self::assertResponseStatusCodeSame(200);
-        self::assertPageTitleContains('Autor index');
+        self::assertPageTitleContains('Autores');
 
         // Use the $crawler to perform additional assertions e.g.
         // self::assertSame('Some text on the page', $crawler->filter('.p')->first()->text());
@@ -48,8 +48,8 @@ final class AutorControllerTest extends WebTestCase
 
         self::assertResponseStatusCodeSame(200);
 
-        $this->client->submitForm('Save', [
-            'autor[Nome]' => 'Testing',
+        $this->client->submitForm('Salvar', [
+            'autor[Nome]' => 'Teste',
         ]);
 
         self::assertResponseRedirects('/autor');
@@ -61,7 +61,7 @@ final class AutorControllerTest extends WebTestCase
     public function testShow(): void
     {
         $fixture = new Autor();
-        $fixture->setNome('My Title');
+        $fixture->setNome('Titulo do meu livro');
 
         $this->manager->persist($fixture);
         $this->manager->flush();
@@ -76,7 +76,7 @@ final class AutorControllerTest extends WebTestCase
     public function testEdit(): void
     {
         $fixture = new Autor();
-        $fixture->setNome('Value');
+        $fixture->setNome('Nome do meu livro');
 
         $this->manager->persist($fixture);
         $this->manager->flush();
@@ -84,14 +84,14 @@ final class AutorControllerTest extends WebTestCase
         $this->client->request('GET', sprintf('%s%s/edit', $this->path, $fixture->getCodAu()));
 
         $this->client->submitForm('Update', [
-            'autor[Nome]' => 'Something New',
+            'autor[Nome]' => 'Novo autor',
         ]);
 
         self::assertResponseRedirects('/autor');
 
         $fixture = $this->autorRepository->findAll();
 
-        self::assertSame('Something New', $fixture[0]->getNome());
+        self::assertSame('Novo autor', $fixture[0]->getNome());
 
     }
 
@@ -104,7 +104,7 @@ final class AutorControllerTest extends WebTestCase
         $this->manager->flush();
 
         $this->client->request('GET', sprintf('%s%s', $this->path, $fixture->getCodAu()));
-        $this->client->submitForm('Delete');
+        $this->client->submitForm('Excluir');
 
         self::assertResponseRedirects('/autor');
         self::assertSame(0, $this->autorRepository->count([]));

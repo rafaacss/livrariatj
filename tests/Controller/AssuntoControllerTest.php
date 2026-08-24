@@ -36,7 +36,7 @@ final class AssuntoControllerTest extends WebTestCase
         $crawler = $this->client->request('GET', $this->path);
 
         self::assertResponseStatusCodeSame(200);
-        self::assertPageTitleContains('Assunto index');
+        self::assertPageTitleContains('Assunto');
 
         // Use the $crawler to perform additional assertions e.g.
         // self::assertSame('Some text on the page', $crawler->filter('.p')->first()->text());
@@ -48,7 +48,7 @@ final class AssuntoControllerTest extends WebTestCase
 
         self::assertResponseStatusCodeSame(200);
 
-        $this->client->submitForm('Save', [
+        $this->client->submitForm('Salvar', [
             'assunto[Descricao]' => 'Testing',
         ]);
 
@@ -61,7 +61,7 @@ final class AssuntoControllerTest extends WebTestCase
     public function testShow(): void
     {
         $fixture = new Assunto();
-        $fixture->setDescricao('My Title');
+        $fixture->setDescricao('Meu Titulo');
 
         $this->manager->persist($fixture);
         $this->manager->flush();
@@ -83,14 +83,14 @@ final class AssuntoControllerTest extends WebTestCase
         $this->client->request('GET', sprintf('%s%s/edit', $this->path, $fixture->getCodAs()));
 
         $this->client->submitForm('Update', [
-            'assunto[Descricao]' => 'Something New',
+            'assunto[Descricao]' => 'Novo assunto',
         ]);
 
         self::assertResponseRedirects('/assunto');
 
         $fixture = $this->assuntoRepository->findAll();
 
-        self::assertSame('Something New', $fixture[0]->getDescricao());
+        self::assertSame('Novo assunto', $fixture[0]->getDescricao());
 
     }
 
@@ -103,7 +103,7 @@ final class AssuntoControllerTest extends WebTestCase
         $this->manager->flush();
 
         $this->client->request('GET', sprintf('%s%s', $this->path, $fixture->getCodAs()));
-        $this->client->submitForm('Delete');
+        $this->client->submitForm('Excluir');
 
         self::assertResponseRedirects('/assunto');
         self::assertSame(0, $this->assuntoRepository->count([]));
