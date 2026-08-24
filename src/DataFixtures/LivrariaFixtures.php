@@ -81,7 +81,6 @@ class LivrariaFixtures extends Fixture
             $manager->persist($novoautor);
             $autores[$indice] = $novoautor;
         }
-        echo "1 - autores ok\n";
 
         foreach ($this->getAssuntos() as $indice => $assunto) {
             $novoassunto = new Assunto();
@@ -90,7 +89,6 @@ class LivrariaFixtures extends Fixture
             $manager->persist($novoassunto);
             $assuntos[$indice] = $novoassunto;
         }
-        echo "1 - assuntos ok\n";
 
         foreach ($this->getLivros() as $i=>$livro) {
             $novolivro = new Livro();
@@ -110,10 +108,8 @@ class LivrariaFixtures extends Fixture
 
             $manager->persist($novolivro);
         }
-        echo "1 - livros ok\n";
 
         $manager->flush();
-        echo "4 - flush ok\n";
 
     }
 

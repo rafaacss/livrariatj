@@ -265,14 +265,16 @@ livraria/
 │   ├── Controller/          # Controllers
 │   ├── DataFixtures/        # Massa de dados
 │   ├── Entity/              # Entidades Doctrine
-│   └── Repository/          # Repositórios
+│   ├── Repository/          # Repositórios
+│   ├── Service/             # Serviços
+│   └── Form                 # Formulários    
 │
 ├── templates/
 │   ├── autor/               # Templates de autores
 │   ├── assunto/             # Templates de assuntos
 │   ├── livro/               # Templates de livros
 │   ├── relatorio/           # Templates dos relatórios
-│   └── bundles/              # Templates de páginas de erro
+│   └── bundles/             # Templates de páginas de erro
 │
 ├── tests/
 │   ├── Controller/          # Testes funcionais
@@ -319,7 +321,7 @@ O modelo de dados definido pelo projeto teste foi mantido nos mesmos pontos em q
 
 ### Valor como DECIMAL(10,2)
 
-O campo Valor utiliza DESCIMAL, e não FLOAT, porque representa dinheiro e não deve sofrer alterações de precisão de ponto flutuante.
+O campo Valor utiliza DECIMAL, e não FLOAT, porque representa dinheiro e não deve sofrer alterações de precisão de ponto flutuante. O Doctrine devolve decimal como string no PHP, por isso a propriedade $Valor na entidade é tipada como string, preservando a precisão exata do banco.
 
 ### schema_filter
 
