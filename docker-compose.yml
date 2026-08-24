@@ -11,8 +11,11 @@ services:
         networks:
             - livrariatj
         depends_on:
-            - mysql
-            - redis
+            mysql:
+                condition: service_healthy
+            redis:
+                condition: service_started
+
 
     nginx:
         image: nginx:alpine
@@ -37,8 +40,16 @@ services:
             MYSQL_DATABASE: livrariatj
             MYSQL_USER: livrariatj
             MYSQL_PASSWORD: livrariatj
+            DATABASE_URL: "mysql://livrariatj:livrariatj@mysql:3306/livrariatj?serverVersion=8.0&charset=utf8mb4"
+        healthcheck:
+            test: [ "CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-ulivrariatj", "-plivrariatj" ]
+            interval: 5s
+            timeout: 5s
+            retries: 30
+            start_period: 30s
         ports:
             - "3306:3306"
+            -
         volumes:
             - mysql_data:/var/lib/mysql
             - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
